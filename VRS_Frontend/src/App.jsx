@@ -13,6 +13,7 @@ import './App.css';
 
 import Footer from './components/common/Footer';
 import PrivateRoute from './components/common/PrivateRoute';
+import VendorRegister from "./components/vendor/VendorRegister";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element = {<Home/>} />
+                <Route path="/vendor/Register" element = {<VendorRegister/>}></Route>
 
             </Routes>
 
