@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle with smooth stroke -->
+  <circle cx="50" cy="50" r="46" stroke="#28a745" stroke-width="4" fill="white"/>
+  
+  <!-- Centered text with visual enhancements -->
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+        fill="#28a745" font-size="34" font-family="Georgia, serif"
+        font-weight="bold" letter-spacing="2">
+    VRS
+  </text>
+</svg>
