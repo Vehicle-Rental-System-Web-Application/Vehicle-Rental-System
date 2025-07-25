@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Home Page Component
 import Home from './pages/Home'
+import CarListing from './pages/CarListing';
 
 // Vendor Registration Component
 import VendorRegister from "./components/vendor/VendorRegister";
@@ -27,7 +28,8 @@ function App() {
             <Navbar/>
 
             <Routes>
-                <Route path="/" element = {<Home/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="/cars" element={<CarListing />} />
 
                 <Route path="/vendor/register" element={<VendorRegister />} />
             </Routes>
