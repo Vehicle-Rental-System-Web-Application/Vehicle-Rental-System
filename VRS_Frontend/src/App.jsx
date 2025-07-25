@@ -11,15 +11,32 @@ import Navbar from './components/common/Navbar';
 import './App.css';
 
 
+import Footer from './components/common/Footer';
+import PrivateRoute from './components/common/PrivateRoute';
+
+
 function App() {
     return (
+
+        <> 
+       
+
         <div className="App"> 
             <Navbar/>
+
             <Routes>
                 <Route path="/" element = {<Home/>} />
 
             </Routes>
+
+            <Footer />
+      
         </div>
+
+        </>
+
+        
+
     )
 }
 
