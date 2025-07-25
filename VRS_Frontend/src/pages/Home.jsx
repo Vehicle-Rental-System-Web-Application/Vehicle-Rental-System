@@ -1,5 +1,6 @@
 import { LinkContainer } from "react-router-bootstrap";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+
 
 
 
@@ -12,10 +13,12 @@ const Home = () => {
                 <Col>
                     <h1>Find Your Perfect Ride Here</h1>
                     <p>Rent premium vehicles at affordable prices. Your journey starts here.</p>
-                </Col>
                 <LinkContainer to="/cars">
-                    <button className="btn btn-primary">Browse Cars</button>
+                    <Button variant="primary" size="lg">
+                        Browse Cars Now
+                    </Button>
                 </LinkContainer>
+                </Col>
             </Row>
         </section>
       

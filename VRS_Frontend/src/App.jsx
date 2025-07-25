@@ -4,6 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Home Page Component
 import Home from './pages/Home'
 
+// Navbar Component
+import Navbar from './components/common/Navbar';
+
+
 import './App.css';
 
 
@@ -13,13 +17,26 @@ import PrivateRoute from './components/common/PrivateRoute';
 
 function App() {
     return (
+
         <> 
        
+
+        <div className="App"> 
+            <Navbar/>
+
             <Routes>
                 <Route path="/" element = {<Home/>} />
+
             </Routes>
-             <Footer />
+
+            <Footer />
+      
+        </div>
+
         </>
+
+        
+
     )
 }
 
