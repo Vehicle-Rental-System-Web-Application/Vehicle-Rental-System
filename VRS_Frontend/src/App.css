@@ -1,25 +1,61 @@
-.App {
+/* .App {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     width: 100%;
+} */
 
-}
 
+/* Home Page Hero Section */
 .hero-section {
-background: linear-gradient(135deg, #4ebd3a, #2b8b78);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 100px 0;
+  text-align: center;
 }
 
 .hero-section h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .hero-section p {
+
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+
+/* Navbar  */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+/* Custom Styles */
+.btn-primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
