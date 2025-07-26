@@ -24,7 +24,7 @@ const VendorRegister =() =>{
 
   const [errors, setErrors] = useState({});//to  store validation errors messeges.
   
-  const [loading, setLoading] = useState(false);
+ const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();// for navigate to user login.
 
