@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+//React Bootstrap components for styling the form.
 
 
 import { useNavigate ,Link} from "react-router-dom";
