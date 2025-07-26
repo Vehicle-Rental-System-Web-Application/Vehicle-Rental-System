@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-//useNavigate: Helps you redirect to another page after successful registration.
-//import "./VendorRegister.css";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+
+
+import { useNavigate ,Link} from "react-router-dom";
+//useNavigate: Helps you redirect to another page after successful registration.
+
+ 
 const VendorRegister =() =>{
-  //formdata: stores values from all the input fields.
-  //setFormData: Used to update those values.
+  //formData: stores values from all the input fields.
+  //setformData: Used to update those values.
   //errors: Stores validation error messages (if any).
-  cont [FormData, setFormData] = useState({
+  const [formData, setformData] = useState({
     name:"",
     email: "",
     mobile : "",
@@ -18,12 +23,15 @@ const VendorRegister =() =>{
   });
 
   const [errors, setErrors] = useState({});//to  store validation errors messeges.
+  
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();// for navigate to user login.
 
   // to handle input changes.
 
-  const handlechange = (e) =>{
-    setFormData({...FormData, [e.target.name]: e.target.value});  
+  const handleChange = (e) =>{
+    setformData({...formData, [e.target.name]: e.target.value});  
   }
 
   const validationForm = () =>{
@@ -55,19 +63,23 @@ const VendorRegister =() =>{
   };
 
   // when register button is clicked.
-    const handleSubmit = (e) => {
+    const handleSubmit =async  (e) => {
     //e.preventDefault() stops the page from reloading.
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validationForm()) return;
     //If valid:
+
+    setLoading(true);
+
     //Prints form data to console (you’ll replace this with API call later).
     // Later we will replace this with backend API call
-    console.log("Vendor registered:", formData);
-    //Shows alert.
-    alert("Registration successful");
-    //Redirects to /vendor/login.
-    navigate("/vendor/login");
+ 
+    setTimeout(() => {
+      alert("Vendor registered successfully!");
+      setLoading(false);
+      navigate("/vendor/login");
+    }, 1500);
   };
   
   // JSX to render the registration form.
@@ -79,75 +91,140 @@ const VendorRegister =() =>{
 
   //	handleChange(): Updates form values when user types
    return (
-    <div className="vendor-register-container">
-      <h2>Vendor Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        {errors.name && <p className="error">{errors.name}</p>}
+    <Container className="py-4">
+      <Row className="justify-content-center">
+        <Col md={8}>
+          <div className="form-container">
+            <Card>
+              <Card.Header className="text-center">
+                <h3>Vendor Registration</h3>
+                <p className="text-muted">Join our platform to list your vehicles</p>
+              </Card.Header>
+              <Card.Body>
+                <Form onSubmit={handleSubmit}>
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Full Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          isInvalid={!!errors.name}
+                          placeholder="Enter your full name"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Email Address</Form.Label>
+                        <Form.Control
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          isInvalid={!!errors.email}
+                          placeholder="Enter your email"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p className="error">{errors.email}</p>}
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Mobile Number</Form.Label>
+                        <Form.Control
+                          type="tel"
+                          name="mobile"
+                          value={formData.mobile}
+                          onChange={handleChange}
+                          isInvalid={!!errors.mobile}
+                          placeholder="Enter your mobile number"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Business Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="businessName"
+                          value={formData.businessName}
+                          onChange={handleChange}
+                          isInvalid={!!errors.businessName}
+                          placeholder="Enter your business name"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.businessName}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-        <input
-          type="text"
-          name="mobile"
-          placeholder="Mobile Number"
-          value={formData.mobile}
-          onChange={handleChange}
-        />
-        {errors.mobile && <p className="error">{errors.mobile}</p>}
+                  <Form.Group className="mb-3">
+                    <Form.Label>Business Address</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      name="businessAddress"
+                      value={formData.businessAddress}
+                      onChange={handleChange}
+                      isInvalid={!!errors.businessAddress}
+                      placeholder="Enter your business address"
+                    />
+                    <Form.Control.Feedback type="invalid">{errors.businessAddress}</Form.Control.Feedback>
+                  </Form.Group>
 
-        <input
-          type="text"
-          name="businessName"
-          placeholder="Business Name"
-          value={formData.businessName}
-          onChange={handleChange}
-        />
-        {errors.businessName && <p className="error">{errors.businessName}</p>}
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          name="password"
+                          value={formData.password}
+                          onChange={handleChange}
+                          isInvalid={!!errors.password}
+                          placeholder="Enter your password"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          name="confirmPassword"
+                          value={formData.confirmPassword}
+                          onChange={handleChange}
+                          isInvalid={!!errors.confirmPassword}
+                          placeholder="Confirm your password"
+                        />
+                        <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-        <input
-          type="text"
-          name="businessAddress"
-          placeholder="Business Address"
-          value={formData.businessAddress}
-          onChange={handleChange}
-        />
-        {errors.businessAddress && <p className="error">{errors.businessAddress}</p>}
+                  <Button type="submit" variant="primary" className="w-100 mb-3" disabled={loading}>
+                    {loading ? "Creating Account..." : "Register as Vendor"}
+                  </Button>
+                </Form>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        {errors.password && <p className="error">{errors.password}</p>}
-
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-        />
-        {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
-
-        <button type="submit">Register</button>
-      </form>
-    </div>
+                <div className="text-center">
+                  <p>
+                    Already have an account? <Link to="/vendor/login">Login here</Link>
+                  </p>
+                </div>
+              </Card.Body>
+            </Card>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
