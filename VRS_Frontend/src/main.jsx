@@ -1,12 +1,16 @@
-import  { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
 import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-const container = document.getElementById('root');
-const root = createRoot(container);     
-root.render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>
+
+createRoot(document.getElementById('root')).render(
+ <BrowserRouter>
+  <App />
+ </BrowserRouter>
 )
